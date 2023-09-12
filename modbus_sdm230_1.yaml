@@ -1,0 +1,80 @@
+  #  eastron sdm230_1     
+  modbus:
+    - name: sdm230_1
+      type: tcp
+      host: 192.168.xxx.xxx
+      port: 502
+      retry_on_empty: true
+      # retries: 10
+      # close_comm_on_error: true
+      delay: 5
+      # timeout: 5
+      sensors:
+        - name: sdm230_1_L1_Spannung
+          unique_id: SDM230_1_Voltage_L1
+          input_type: input
+          slave: 1
+          address: 0
+          unit_of_measurement: V
+          device_class: Voltage
+          state_class: measurement
+          count: 2
+          data_type: float32
+          scan_interval: 10
+          scale: 1
+          precision: 2
+        
+        - name: sdm230_1_L1_Strom
+          unique_id: SDM230_1_Ampere_L1
+          input_type: input
+          slave: 1
+          address: 6
+          unit_of_measurement: A
+          device_class: Current
+          state_class: measurement
+          count: 2
+          data_type: float32
+          scan_interval: 10
+          scale: 1
+          precision: 2
+        
+        - name: sdm230_1_Frequenz
+          unique_id: SDM230_1_Frequenz
+          input_type: input
+          slave: 1
+          address: 70
+          unit_of_measurement: Hz
+          device_class: frequency
+          state_class: measurement
+          count: 2
+          data_type: float32
+          scan_interval: 10
+          scale: 1
+          precision: 2
+
+        - name: sdm230_1_Wirkleistung
+          unique_id: SDM230_1_Wirkleistung
+          input_type: input
+          slave: 1
+          address: 0xC
+          unit_of_measurement: W
+          device_class: power
+          state_class: measurement
+          data_type: float32
+          scan_interval: 10
+          scale: 1
+          precision: 2
+        
+        - name: sdm230_1_Wirkarbeit
+          unique_id: SDM230_1_Wirkarbeit
+          input_type: input
+          slave: 1
+          address: 0x48
+          unit_of_measurement: kWh
+          device_class: energy
+          state_class: total_increasing
+          count: 2
+          data_type: float32
+          scan_interval: 60
+          scale: 1
+          precision: 2
